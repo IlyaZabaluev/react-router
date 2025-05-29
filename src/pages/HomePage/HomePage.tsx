@@ -1,8 +1,7 @@
-export const Home = () => {
+export const HomePage = () => {
   return (
     <div>
-      <h1>Hello!</h1>
       <p>Select a category from the menu above</p>
     </div>
-  );
-};
+  )
+}

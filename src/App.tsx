@@ -1,6 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom'
 import {
-  Home,
+  HomePage,
   NotFound,
   Heroes,
   Episodes,
@@ -8,23 +8,30 @@ import {
   LocationDetails,
   EpisodeDetails,
   Locations,
-} from "./pages";
-import { Navbar } from "./components";
+  Login,
+} from './pages'
+import { AuthProvider } from './context/AuthProvider'
+import { MainLayout } from './layouts/MainLayout'
+import { PrivateRoute } from './components/PrivetRoute'
 
 export const App = () => {
   return (
-    <>
-      <Navbar />
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/heroes" element={<Heroes />} />
-        <Route path="/heroes/:id" element={<HeroDetails />} />
-        <Route path="/locations" element={<Locations />} />
-        <Route path="/locations/:id" element={<LocationDetails />} />
-        <Route path="/episodes" element={<Episodes />} />
-        <Route path="/episodes/:id" element={<EpisodeDetails />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<PrivateRoute />}>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/heroes" element={<Heroes />} />
+            <Route path="/heroes/:id" element={<HeroDetails />} />
+            <Route path="/locations" element={<Locations />} />
+            <Route path="/locations/:id" element={<LocationDetails />} />
+            <Route path="/episodes" element={<Episodes />} />
+            <Route path="/episodes/:id" element={<EpisodeDetails />} />
+          </Route>
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
-  );
-};
+    </AuthProvider>
+  )
+}
