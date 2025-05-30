@@ -4,4 +4,5 @@ export interface Location {
   type: string;
   dimension: string | "unknown";
   created: string;
+  residents: string
 }

@@ -1,10 +1,15 @@
 import { useParams } from "react-router-dom";
 import { type Hero } from "../../types/hero";
-import heroesData from "../../data/characters.json";
+import { useEffect, useState } from "react";
+import { api } from "../../api/apiClients";
 
 export const HeroDetails = () => {
   const { id } = useParams();
-  const hero = heroesData.find((e) => e.id === Number(id)) as Hero;
+  const [hero, setHero] = useState<Hero | null>(null);
+
+  useEffect(() => {
+    api.heroes.getById(Number(id)).then(setHero);
+  }, [id]);
 
   if (!hero) {
     return <div>Hero not found!</div>;

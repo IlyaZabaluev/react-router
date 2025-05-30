@@ -1,10 +1,15 @@
 import { useParams } from "react-router-dom";
-import { type Episode } from "../../types/episode";
-import episodeData from "../../data/episode.json";
+import { useEffect, useState } from "react";
+import { api } from "../../api/apiClients";
+import type { Episode } from "../../types/episode";
 
 export const EpisodeDetails = () => {
   const { id } = useParams();
-  const episode = episodeData.find((e) => e.id === Number(id)) as Episode;
+  const [episode, setEpisode] = useState<Episode | null>(null);
+  
+  useEffect(() => {
+    api.episodes.getById(Number(id)).then(setEpisode);
+  }, [id]);
 
   if (!episode) {
     return <div>Episode not found!</div>;
@@ -13,8 +18,9 @@ export const EpisodeDetails = () => {
   return (
     <div>
       <h1>{episode.name}</h1>
-      <p>Release date: {episode.air_date}</p>
       <p>Episode: {episode.episode}</p>
+      <p>Air Date: {episode.air_date}</p>
+      <p>Characters: {episode.characters.length}</p>
     </div>
   );
 };

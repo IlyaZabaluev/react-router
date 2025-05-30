@@ -1,11 +1,9 @@
-import React, { forwardRef, useState } from 'react'
-import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import React, { forwardRef} from 'react'
 
 type InputBaseProps = {
   label?: string
   description?: string
   error?: string
-  icon?: React.ReactNode
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   radius?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   withAsterisk?: boolean
@@ -19,7 +17,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     label,
     description,
     error,
-    icon,
     size = 'md',
     radius = 'sm',
     withAsterisk,
@@ -27,9 +24,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     className,
     ...rest
   } = props
-
-  const [showPassword, setShowPassword] = useState(false)
-  const inputType = type === 'password' && showPassword ? 'text' : type
 
   return (
     <div>
@@ -41,15 +35,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       )}
 
       <div>
-        {icon && <div>{icon}</div>}
 
-        <input ref={ref} type={inputType} {...rest} />
+        <input ref={ref}  {...rest} />
 
-        {type === 'password' && (
+        {/* {type === 'password' && (
           <button type="button" onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <IconEyeOff size={16} /> : <IconEye size={16} />}
           </button>
-        )}
+        )} */}
       </div>
 
       {description && <div>{description}</div>}

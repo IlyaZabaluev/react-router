@@ -1,7 +1,6 @@
 import { type FormEvent, useState, useRef } from 'react'
 import { validateLogin } from '../../utils/validateLogin'
 import { Input } from '../../components/Input'
-import { IconLock } from '@tabler/icons-react'
 import { useAuth } from '../../context/AuthProvider'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -92,7 +91,6 @@ export const Login = () => {
           value={formData.password}
           onChange={handleChange}
           error={errors.password}
-          icon={<IconLock size={16} />}
           withAsterisk
           size="md"
           radius="md"

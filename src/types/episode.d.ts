@@ -4,4 +4,5 @@ export interface Episode {
   air_date: string;
   episode: string;
   created: string;
+  characters: string
 }
