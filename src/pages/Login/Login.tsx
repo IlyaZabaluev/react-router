@@ -1,7 +1,7 @@
 import { type FormEvent, useState, useRef } from 'react'
-import { validateLogin } from '../../utils/validateLogin'
-import { Input } from '../../components/Input'
-import { useAuth } from '../../context/AuthProvider'
+import { validateLogin } from './utils/validateLogin'
+import { Input } from '../../components/Input/Input'
+import { useAuth } from '../../app/context/AuthProvider'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 export const Login = () => {

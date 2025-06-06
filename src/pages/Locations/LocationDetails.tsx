@@ -1,18 +1,18 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { api } from "../../api/apiClients";
-import type { Location } from "../../types/location";
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { api } from '../../api/apiClients/apiClients'
+import type { Location } from '../../types/location'
 
 export const LocationDetails = () => {
-  const { id } = useParams();
-  const [location, setLocation] = useState<Location | null>(null);
-  
+  const { id } = useParams()
+  const [location, setLocation] = useState<Location | null>(null)
+
   useEffect(() => {
-    api.locations.getById(Number(id)).then(setLocation);
-  }, [id]);
+    api.locations.getById(Number(id)).then(setLocation)
+  }, [id])
 
   if (!location) {
-    return <div>Location not found!</div>;
+    return <div>Location not found!</div>
   }
 
   return (
@@ -22,5 +22,5 @@ export const LocationDetails = () => {
       <p>Dimension: {location.dimension}</p>
       <p>Residents: {location.residents.length}</p>
     </div>
-  );
-};
+  )
+}

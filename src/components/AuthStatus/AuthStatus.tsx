@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthProvider'
+import { useAuth } from '../../app/context/AuthProvider'
 
 export const AuthStatus = () => {
   const auth = useAuth()

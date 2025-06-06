@@ -1,1 +1,1 @@
-export type SortMode = "ASC" | "DESC" | null;
+export type SortMode = 'ASC' | 'DESC' | null

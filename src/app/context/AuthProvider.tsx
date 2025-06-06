@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
-import { type AuthContextType, type LoginFormData } from '../types/auth'
+import { type AuthContextType, type LoginFormData } from '../../types/auth'
 
 const AuthContext = createContext<AuthContextType | null>(null)
 

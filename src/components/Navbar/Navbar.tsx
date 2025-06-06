@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom'
-import { AuthStatus } from './AuthStatus'
-import { useAuth } from '../context/AuthProvider'
+import { useAuth } from '../../app'
+import { AuthStatus } from '../AuthStatus/AuthStatus'
 
 export const Navbar = () => {
-  const { user } = useAuth()
+  const auth = useAuth()
+
+  if (!auth) {
+    return null
+  }
+  const { user } = auth
+
   return (
     <>
       <AuthStatus />

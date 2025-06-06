@@ -1,18 +1,18 @@
-import { useParams } from "react-router-dom";
-import { type Hero } from "../../types/hero";
-import { useEffect, useState } from "react";
-import { api } from "../../api/apiClients";
+import { useParams } from 'react-router-dom'
+import { type Hero } from '../../types/hero'
+import { useEffect, useState } from 'react'
+import { api } from '../../api/apiClients/apiClients'
 
 export const HeroDetails = () => {
-  const { id } = useParams();
-  const [hero, setHero] = useState<Hero | null>(null);
+  const { id } = useParams()
+  const [hero, setHero] = useState<Hero | null>(null)
 
   useEffect(() => {
-    api.heroes.getById(Number(id)).then(setHero);
-  }, [id]);
+    api.heroes.getById(Number(id)).then(setHero)
+  }, [id])
 
   if (!hero) {
-    return <div>Hero not found!</div>;
+    return <div>Hero not found!</div>
   }
 
   return (
@@ -22,5 +22,5 @@ export const HeroDetails = () => {
       <p>Status: {hero.status}</p>
       <p>Species: {hero.species}</p>
     </div>
-  );
-};
+  )
+}
