@@ -46,16 +46,19 @@
 Методы для входа/выхода
 Интеграция с localStorage для сохранения сессии
 
-## Оптимизация 
+## Оптимизация
+
 Использование Suspense и Lazy loading для всех страниц проекта
 Файл Error Boundary, для корректной работы приложения при багах
 Добавлен Infinity Scroll для всех категорий.
 
-
 # Технологии
+
 React с TypeScript
 React Router DOM для маршрутизации
 Хуки для реализации логики (бесконечный скролл, сортировка)
+Архитектура Feature-Sliced Design (FSD)
+UI-библиотека Material UI (MUI)
 API Rick and Morty (
 https://rickandmortyapi.com/
 )

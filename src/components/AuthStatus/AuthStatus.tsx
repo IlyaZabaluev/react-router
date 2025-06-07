@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../app/context/AuthProvider'
+import Button from '@mui/material/Button'
 
 export const AuthStatus = () => {
   const auth = useAuth()
@@ -16,7 +17,10 @@ export const AuthStatus = () => {
   }
   return (
     <p>
-      Welcom User {auth?.user} <button onClick={handleSignout}>Sign out</button>
+      Welcom User {auth?.user}{' '}
+      <Button onClick={handleSignout} variant="contained">
+        Sign out
+      </Button>
     </p>
   )
 }

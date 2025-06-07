@@ -1,5 +1,6 @@
-import type { SortButtonProps } from '../types/button-sort'
-import type { SortMode } from '../types/sort-mode'
+import type { SortButtonProps } from './types'
+import type { SortMode } from '../../types/sort-mode'
+import Button from '@mui/material/Button'
 
 export const SortButton = ({ sortMode, onClick }: SortButtonProps) => {
   const getSortButtonText = (sortMode: SortMode): string => {
@@ -10,5 +11,9 @@ export const SortButton = ({ sortMode, onClick }: SortButtonProps) => {
       : '↓ Newest First'
   }
 
-  return <button onClick={onClick}>{getSortButtonText(sortMode)}</button>
+  return (
+    <Button onClick={onClick} variant="contained">
+      {getSortButtonText(sortMode)}
+    </Button>
+  )
 }

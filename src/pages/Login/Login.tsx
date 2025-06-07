@@ -1,8 +1,10 @@
 import { type FormEvent, useState, useRef } from 'react'
 import { validateLogin } from './utils/validateLogin'
-import { Input } from '../../components/Input/Input'
 import { useAuth } from '../../app/context/AuthProvider'
 import { useLocation, useNavigate } from 'react-router-dom'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 
 export const Login = () => {
   const formRef = useRef<HTMLFormElement>(null)
@@ -64,51 +66,45 @@ export const Login = () => {
   return (
     <div className="container">
       <form ref={formRef} onSubmit={handleSubmit}>
-        <Input
-          type="email"
-          name="email"
-          label="Email"
-          placeholder="your@email.com"
-          value={formData.email}
-          onChange={handleChange}
-          error={errors.email}
-          withAsterisk
-          size="md"
-          radius="md"
-          onBlur={(e) =>
-            setErrors((prev) => ({
-              ...prev,
-              email: validateLogin('email', e.target.value),
-            }))
-          }
-        />
+        <Stack spacing={2} width={300}>
+          <TextField
+            type="email"
+            name="email"
+            label="Email"
+            placeholder="your@email.com"
+            value={formData.email}
+            onChange={handleChange}
+            onBlur={(e) =>
+              setErrors((prev) => ({
+                ...prev,
+                email: validateLogin('email', e.target.value),
+              }))
+            }
+          />
 
-        <Input
-          type="password"
-          name="password"
-          label="Password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={handleChange}
-          error={errors.password}
-          withAsterisk
-          size="md"
-          radius="md"
-          onBlur={(e) =>
-            setErrors((prev) => ({
-              ...prev,
-              password: validateLogin('password', e.target.value),
-            }))
-          }
-        />
+          <TextField
+            type="password"
+            name="password"
+            label="Password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={handleChange}
+            onBlur={(e) =>
+              setErrors((prev) => ({
+                ...prev,
+                password: validateLogin('password', e.target.value),
+              }))
+            }
+          />
 
-        <button
-          type="submit"
-          className="button"
-          disabled={!!errors.email || !!errors.password}
-        >
-          Войти
-        </button>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={!!errors.email || !!errors.password}
+          >
+            Войти
+          </Button>
+        </Stack>
       </form>
     </div>
   )
