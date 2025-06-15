@@ -1,5 +1,5 @@
 import type { SortButtonProps } from './types'
-import type { SortMode } from '../../types/sort-mode'
+import type { SortMode } from '../../hooks/sort-mode'
 import Button from '@mui/material/Button'
 
 export const SortButton = ({ sortMode, onClick }: SortButtonProps) => {

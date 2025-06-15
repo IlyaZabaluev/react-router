@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { api } from '../../api/apiClients/apiClients'
-import type { Episode } from '../../types/episode'
+import type { Episode } from './types'
 
 export const EpisodeDetails = () => {
   const { id } = useParams()

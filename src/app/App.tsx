@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/AuthProvider'
 import { MainLayout } from '../pages/layouts/MainLayout'
@@ -29,6 +29,21 @@ const Login = lazyNamed(import('../pages/Login/Login'), 'Login')
 const Loading = () => <div>Loading...</div>
 
 export const App = () => {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.ts').then(
+          (registration) => {
+            console.log('ServiceWorker registration successful', registration)
+          },
+          (err) => {
+            console.log('ServiceWorker registration failed: ', err)
+          }
+        )
+      })
+    }
+  }, [])
+
   return (
     <AuthProvider>
       <Suspense fallback={<Loading />}>

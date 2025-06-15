@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { type SortMode } from '../types/sort-mode'
 
-export type SortableEntity = 'heroes' | 'locations' | 'episodes'
+type SortableEntity = 'heroes' | 'locations' | 'episodes'
+type SortMode = 'ASC' | 'DESC' | null
 
 export const useSorting = (entity: SortableEntity) => {
   const [searchParams, setSearchParams] = useSearchParams()

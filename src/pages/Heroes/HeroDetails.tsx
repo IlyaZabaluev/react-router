@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { type Hero } from '../../types/hero'
+import { type Hero } from './types'
 import { useEffect, useState } from 'react'
 import { api } from '../../api/apiClients/apiClients'
 
